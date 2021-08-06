@@ -5,16 +5,16 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiRmVkZTkxMSIsImlkIjoxLCJpYXQiOjE2MjgwOTE4OTB9.1f18jex7CqDeCqbCRfohaSA6CPIGKRgazzxp0hsnBUs
 
  { 
-    "titulo":"FiestadelaPrimavera",
-    "descripcion":"Reunite con tus amigos a escuchar las mejores bandas",
+    "titulo":"Fiesta del Asado con Cuero",
+    "descripcion":"Recorra los stands desgustando el mejor asado con cuero de la región.",
     "destacado":true,
-    "imagenUrl":"www.fiestaprimavera21.com", 
+    "imagenUrl":"www.tecomoconcueroytodo.com", 
     "localidad":"Parana, Entre Rios",
     "detalles":[
         {
-            "fecha":"21/09/2021",
-            "hora":"13:00",
-            "precio":1000
+            "fecha":"25/08/2021",
+            "hora":"12:00",
+            "precio":2000
         }
     ]
 }

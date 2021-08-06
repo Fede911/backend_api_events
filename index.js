@@ -23,3 +23,5 @@ app.use('/', routes);
 app.listen(port,host,(req,res)=>{
     console.log('Servidor '+host+' escuchando puerto:'+port);
 });
+
+module.exports = app;

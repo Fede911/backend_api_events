@@ -1,5 +1,5 @@
 const supertest = require('supertest');
-const app = require('../app');
+const app = require('../index');
 const api = supertest(app);
 const db = require('../config/db');
 const Usuarios = require('../models/Usuarios');
@@ -20,7 +20,7 @@ describe('Creación de Usuarios', () => {
             clave: 'demo'
         };
         const res = await api.post('/usuario').send(nuevoUsuario);
-        expect(res.statusCode).toEqual(201)
+        expect(res.statusCode).toEqual(200)
         expect(res.body).toHaveProperty('nuevoUsuario');
     });       
     
@@ -131,7 +131,7 @@ describe('Login de Usuarios', () => {
     test('Usuario logueado puede registrar el evento 1', async () => {
         const nuevoEvento = {
           "titulo":"Primer Evento",
-          "descripcion":"Este es el primer evento registrado",
+          "descripcion":"Actividades relacionadas al relvamiento de procesos del negocio.",
           "destacado":true,
           "imagenUrl":"www.lol.com", 
           "localidad":"Paraná",
@@ -162,7 +162,7 @@ describe('Login de Usuarios', () => {
     test('Usuario logueado puede registrar el segundo evento', async () => {
         const nuevoEvento = {
           "titulo":"Segundo evento",
-          "descripcion":"Este es mi segundo evento... ",
+          "descripcion":"Actividades relacionadas con la asesoria de clientes ",
           "destacado":false,
           "imagenUrl":"www.lol.com", 
           "localidad":"Santa Fe",
@@ -191,7 +191,7 @@ describe('Login de Usuarios', () => {
     test('Usuario logueado puede agregar el tercer evento', async () => {
         const nuevoEvento = {
           "titulo":"Tercer evento",
-          "descripcion":"Este es mi tercer evento",
+          "descripcion":"Participa de esta reunion de licenciados en informatica",
           "destacado":false,
           "imagenUrl":"www.lol.com", 
           "localidad":"Cordoba",
@@ -221,7 +221,7 @@ describe('Login de Usuarios', () => {
     test('Un usuario logueado puede agregar el evento ', async () => {
         const nuevoEvento = {
           "titulo":"Cuarto evento",
-          "descripcion":"Este es el cuarto",
+          "descripcion":"Participa ya de este encuentro particularizado por sus disertantes",
           "destacado":false,
           "imagenUrl":"www.lol.com", 
           "localidad":"Corrientes",
@@ -265,7 +265,7 @@ describe('Login de Usuarios', () => {
         const res = await api.get(`/eventos/${idEvento1}`)
         expect(res.statusCode).toEqual(200);
         const contents = res.body.map(r => r.titulo);
-		expect(contents).toContain('Primer');
+		expect(contents).toContain('Primer Evento');
     });
 
     test('Compartir evento en Twitter', async () => {    
@@ -273,14 +273,14 @@ describe('Login de Usuarios', () => {
         const id = idEvento1 + "";
         const res = await api.get('/compartirevento').send({id: id});        
         expect(res.statusCode).toEqual(200);        
-		expect(res.body).toEqual('Iré al primer @ 2021-10-08 www.lol.com')
+		expect(res.body).toEqual('Iré al Primer Evento @ 2021-08-12 www.lol.com')
     });
 
     test('Listado de eventos ordenados por fecha', async () => {
         const res = await api.get('/eventos')
         expect(res.statusCode).toEqual(200)
         const contents = res.body.map(r => r.titulo);
-		expect(contents).toContain('Cuarto');
+		expect(contents).toContain('Cuarto evento');
         
     });
 });
