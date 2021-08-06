@@ -1,0 +1,3 @@
+// Obtener eventos
+GET http://localhost:4000/eventos123
+
